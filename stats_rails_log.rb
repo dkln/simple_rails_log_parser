@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'hirb'
 
-# parse MERB log file
+# parse MERB and/or Rails log files (2.3.8 or 3)
 file = ARGV.first
 exit unless File.exists?(file)
 
@@ -15,7 +15,7 @@ File.open(file, 'r') do |f|
   while line = f.gets
     # match lines that start with Params:
     if matches = line.match(/\s\sParameters:\s(\{.+\})/)
-      params = eval(matches[1])
+      params = eval(matches[1].gsub(/=>#<[^\>]+>/, '=>""'))
       controller = params['controller']
       action = params['action'] || 'index'
 
@@ -25,6 +25,24 @@ File.open(file, 'r') do |f|
       action = matches[2]
 
     # match lines that end with ~ {}
+    if matches = line.match(/~\sParams:\s(.+)/)
+      params = eval(matches[1].gsub(/=>#<[^\>]+>/, '=>""'))
+
+      controller = params['controller']
+      action = params['action']
+
+    # match lines that end with ~ {}
+    elsif matches = line.match(/~\s(\{:.+\})/) and controller and action
+      params = eval(matches[1].gsub(/=>#<[^\>]+>/, '=>""'))
+
+      actions[controller] ||= {}
+      actions[controller][action] ||= { :count => 0, :before_filter_time => 0, :after_filter_time => 0, :action_time => 0 }
+
+      actions[controller][action][:count] += 1
+      actions[controller][action][:before_filter_time] += params[:before_filters_time].to_f
+      actions[controller][action][:after_filter_time] += params[:after_filters_time].to_f
+      actions[controller][action][:action_time] += params[:action_time].to_f
+
     elsif matches = line.match(/Completed.+in\s([0-9\.]+)ms/) and controller and action
       actions[controller] ||= {}
       actions[controller][action] ||= { :count => 0, :action_time => 0 }
