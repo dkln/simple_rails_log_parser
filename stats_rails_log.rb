@@ -14,12 +14,12 @@ format = nil
 File.open(file, 'r') do |f|
   while line = f.gets
     # match lines that start with Params:
-    if matches = line.match(/\s\sParameters:\s(\{.+\})/)
+    if matches = line.match(/\s\sParameters:\s(\{.+\})/) and not controller and not action
       params = eval(matches[1])
       controller = params['controller']
       action = params['action'] || 'index'
 
-    elsif matches = line.match(/\s\sProcessing\sby\s(.+)#(.+)\sas\s/)
+    elsif matches = line.match(/\s\sProcessing\sby\s(.+)#(.+)\sas\s/) and not controller and not action
     # match lines that start with Processing....
       controller = matches[1].gsub(/Controller/, '').downcase
       action = matches[2]
