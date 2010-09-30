@@ -1,9 +1,9 @@
-= Übersimpel Rails log file parser
+= Übersimpel Rails (or Merb) log file parser
 Hirb is required:
   gem install hirb
 
 Now run stats on given log file:
-  ./stats_rails_log.rb ./log/development.log
+  ./stats_log ./log/development.log
 
 And it outputs something like this:
   +------------+-----------------------+----------+------------+---------------------+
