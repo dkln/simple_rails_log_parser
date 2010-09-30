@@ -1,0 +1,38 @@
+= Übersimpel Rails log file parser
+Hirb is required:
+  gem install hirb
+
+Now run stats on given log file:
+  ./stats_rails_log.rb ./log/development.log
+
+And it outputs something like this:
+  +------------+-----------------------+----------+------------+------------------+
+  | controller | action                | requests | total time | avg time         |
+  +------------+-----------------------+----------+------------+------------------+
+  | frontend   | tables                | 146      | 20960.159  | 143.562732876712 |
+  | frontend   | forms                 | 16       | 1752.144   | 109.509          |
+  | frontend   | autocomplete          | 17       | 1857.062   | 109.238941176471 |
+  | frontend   | style_color_reference | 5        | 512.056    | 102.4112         |
+  | frontend   | blocks                | 89       | 7731.128   | 86.866606741573  |
+  | frontend   | style_html_reference  | 8        | 687.069    | 85.883625        |
+  | frontend   | notifications         | 15       | 1214.033   | 80.9355333333333 |
+  | frontend   | no_submenu            | 4        | 315.047    | 78.76175         |
+  | frontend   | style_form_output     | 10       | 774.034    | 77.4034          |
+  | frontend   | tabs                  | 10       | 738.127    | 73.8127          |
+  | frontend   | definition_lists      | 24       | 1709.042   | 71.2100833333333 |
+  | frontend   | style_forms           | 7        | 491.053    | 70.1504285714286 |
+  | frontend   | style_basic           | 19       | 1276.04    | 67.16            |
+  | frontend   | style_tables          | 7        | 454.047    | 64.8638571428571 |
+  | frontend   | remote_calls          | 44       | 2801.039   | 63.6599772727273 |
+  | frontend   | wizard                | 9        | 539.047    | 59.8941111111111 |
+  | frontend   | login                 | 26       | 773.016    | 29.7313846153846 |
+  | frontend   | popup                 | 19       | 173.004    | 9.10547368421053 |
+  | frontend   | flash_test            | 4        | 5.0        | 1.25             |
+  +------------+-----------------------+----------+------------+------------------+
+  19 rows in set
+
+= Credits
+
+Use it, send it to your mom, throw it away or extend it will cool new stuff. Just stick to the rules of the MIT license :)
+
+Copyright © 2010 Diederick Lawson

@@ -17,15 +17,20 @@ File.open(file, 'r') do |f|
     if matches = line.match(/\s\sParameters:\s(\{.+\})/)
       params = eval(matches[1])
       controller = params['controller']
-      action = params['action']
+      action = params['action'] || 'index'
+
+    elsif matches = line.match(/\s\sProcessing\sby\s(.+)#(.+)\sas\s/)
+    # match lines that start with Processing....
+      controller = matches[1].gsub(/Controller/, '').downcase
+      action = matches[2]
 
     # match lines that end with ~ {}
-    elsif matches = line.match(/Completed\sin\s([0-9\.]+)ms/) and controller and action
+    elsif matches = line.match(/Completed.+in\s([0-9\.]+)ms/) and controller and action
       actions[controller] ||= {}
       actions[controller][action] ||= { :count => 0, :action_time => matches[1].to_f / 1000.0 }
 
       actions[controller][action][:count] += 1
-      actions[controller][action][:action_time] += params[:action_time].to_f
+      actions[controller][action][:action_time] += matches[1].to_f
 
       action = nil
       controller = nil
