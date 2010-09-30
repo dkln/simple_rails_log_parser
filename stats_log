@@ -26,7 +26,7 @@ File.open(file, 'r') do |f|
       action = matches[2]
 
     # match lines that end with ~ {}
-    if matches = line.match(/~\sParams:\s(.+)/)
+    elsif matches = line.match(/~\sParams:\s(.+)/) and not controller and not action
       params = eval(matches[1].gsub(/=>#<[^\>]+>/, '=>""'))
 
       controller = params['controller']
@@ -43,6 +43,9 @@ File.open(file, 'r') do |f|
       actions[controller][action][:before_filter_time] += params[:before_filters_time].to_f
       actions[controller][action][:after_filter_time] += params[:after_filters_time].to_f
       actions[controller][action][:action_time] += params[:action_time].to_f
+
+      action = nil
+      controller = nil
 
     elsif matches = line.match(/Completed.+in\s([0-9\.]+)ms/) and controller and action
       actions[controller] ||= {}
