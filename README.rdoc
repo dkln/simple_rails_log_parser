@@ -6,29 +6,29 @@ Now run stats on given log file:
   ./stats_rails_log.rb ./log/development.log
 
 And it outputs something like this:
-  +------------+-----------------------+----------+------------+------------------+
-  | controller | action                | requests | total time | avg time         |
-  +------------+-----------------------+----------+------------+------------------+
-  | frontend   | tables                | 146      | 20960.159  | 143.562732876712 |
-  | frontend   | forms                 | 16       | 1752.144   | 109.509          |
-  | frontend   | autocomplete          | 17       | 1857.062   | 109.238941176471 |
-  | frontend   | style_color_reference | 5        | 512.056    | 102.4112         |
-  | frontend   | blocks                | 89       | 7731.128   | 86.866606741573  |
-  | frontend   | style_html_reference  | 8        | 687.069    | 85.883625        |
-  | frontend   | notifications         | 15       | 1214.033   | 80.9355333333333 |
-  | frontend   | no_submenu            | 4        | 315.047    | 78.76175         |
-  | frontend   | style_form_output     | 10       | 774.034    | 77.4034          |
-  | frontend   | tabs                  | 10       | 738.127    | 73.8127          |
-  | frontend   | definition_lists      | 24       | 1709.042   | 71.2100833333333 |
-  | frontend   | style_forms           | 7        | 491.053    | 70.1504285714286 |
-  | frontend   | style_basic           | 19       | 1276.04    | 67.16            |
-  | frontend   | style_tables          | 7        | 454.047    | 64.8638571428571 |
-  | frontend   | remote_calls          | 44       | 2801.039   | 63.6599772727273 |
-  | frontend   | wizard                | 9        | 539.047    | 59.8941111111111 |
-  | frontend   | login                 | 26       | 773.016    | 29.7313846153846 |
-  | frontend   | popup                 | 19       | 173.004    | 9.10547368421053 |
-  | frontend   | flash_test            | 4        | 5.0        | 1.25             |
-  +------------+-----------------------+----------+------------+------------------+
+  +------------+-----------------------+----------+------------+---------------------+
+  | controller | action                | requests | total time | avg time            |
+  +------------+-----------------------+----------+------------+---------------------+
+  | frontend   | tables                | 146      | 20.96      | 0.143561643835616   |
+  | frontend   | forms                 | 16       | 1.752      | 0.1095              |
+  | frontend   | autocomplete          | 17       | 1.857      | 0.109235294117647   |
+  | frontend   | style_color_reference | 5        | 0.512      | 0.1024              |
+  | frontend   | blocks                | 89       | 7.731      | 0.0868651685393258  |
+  | frontend   | style_html_reference  | 8        | 0.687      | 0.085875            |
+  | frontend   | notifications         | 15       | 1.214      | 0.0809333333333334  |
+  | frontend   | no_submenu            | 4        | 0.315      | 0.07875             |
+  | frontend   | style_form_output     | 10       | 0.774      | 0.0774              |
+  | frontend   | tabs                  | 10       | 0.738      | 0.0738              |
+  | frontend   | definition_lists      | 24       | 1.709      | 0.0712083333333333  |
+  | frontend   | style_forms           | 7        | 0.491      | 0.0701428571428571  |
+  | frontend   | style_basic           | 19       | 1.276      | 0.0671578947368421  |
+  | frontend   | style_tables          | 7        | 0.454      | 0.0648571428571429  |
+  | frontend   | remote_calls          | 44       | 2.801      | 0.0636590909090909  |
+  | frontend   | wizard                | 9        | 0.539      | 0.0598888888888889  |
+  | frontend   | login                 | 26       | 0.773      | 0.0297307692307692  |
+  | frontend   | popup                 | 19       | 0.173      | 0.00910526315789474 |
+  | frontend   | flash_test            | 4        | 0.005      | 0.00125             |
+  +------------+-----------------------+----------+------------+---------------------+
   19 rows in set
 
 = Credits

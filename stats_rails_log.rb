@@ -27,10 +27,10 @@ File.open(file, 'r') do |f|
     # match lines that end with ~ {}
     elsif matches = line.match(/Completed.+in\s([0-9\.]+)ms/) and controller and action
       actions[controller] ||= {}
-      actions[controller][action] ||= { :count => 0, :action_time => matches[1].to_f / 1000.0 }
+      actions[controller][action] ||= { :count => 0, :action_time => 0 }
 
       actions[controller][action][:count] += 1
-      actions[controller][action][:action_time] += matches[1].to_f
+      actions[controller][action][:action_time] += (matches[1].to_f / 1000.0)
 
       action = nil
       controller = nil
