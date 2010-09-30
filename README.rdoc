@@ -33,6 +33,6 @@ And it outputs something like this:
 
 = Credits
 
-Use it, send it to your mom, throw it away or extend it will cool new stuff. Just stick to the rules of the MIT license :)
+Use it, send it to your mom.
 
 Copyright © 2010 Diederick Lawson
